@@ -10,7 +10,8 @@ COLLECTION_NAME = "rag_eval_test_vectors"
 ## llm
 EMBED_MODEL = "all-MiniLM-L6-v2"
 OLLAMA_URL = ""
-OLLAMA_EMBEDDING = ""
+TRANSLATION_MODEL = "llama3"
+GENERATION_MODEL = "llama3"
 
 ## languages
 EN = "en"
@@ -21,7 +22,6 @@ FR = "fr"
 # Ingestion - convert_to_pdf
 BASE_PATH = ""
 DESTINATION_PATH = ""
-#
 #
 PDF_DIRECTORY = ""
 DOCS_PATH = "src/ingestion/test"
