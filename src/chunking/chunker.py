@@ -37,10 +37,13 @@ def get_file_hash(filepath):
 def chunk_document(filepath):
     filename = os.path.basename(filepath)
     file_hash = get_file_hash(filepath)
+    chunk_count = 0
+    chunks_mongo = []
 
     print(f"Start Ingestion for: {filename}...🟩")
     if files_col.find_one({"file_hash": file_hash}):
-        print(f"Skipping {filename}: Bereits verarbeitet.🟠")
+        print(f"Skipping process for {filename}: already ingested.🟠")
+        print("Skipping chunking...🟠")
         return
     print(f"Extract text from: {filename}...🟩")
 
@@ -56,9 +59,6 @@ def chunk_document(filepath):
     for el in elements:
         p = el.metadata.to_dict().get("page_number", 1)
         pages[p] = pages.get(p, "") + "\n" + str(el)
-
-    chunk_count = 0
-    chunks_mongo = []
 
     # 3. Intelligent page-level chunking
     for page_num, page_text in pages.items():
@@ -90,6 +90,6 @@ def chunk_document(filepath):
         "processed_at": datetime.now()
     })
 
-    print(f"intelligente Chunks erstellt: {filename} -> {chunk_count} 🟩")
+    print(f"chunks saved to mongodb: {filename} -> {chunk_count} 🟩")
 
     return chunks_mongo

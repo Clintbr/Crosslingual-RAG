@@ -20,11 +20,14 @@ if not q_client.collection_exists(COLLECTION_NAME):
 
 def embedd_document(filepath):
     chunks_mongo = chunk_document(filepath)
+    if not chunks_mongo:
+        print("Skipping embedding...🟠")
+        return
     file_name = chunks_mongo[0].get('filename')
     batch_points = []
     chunk_count = 0
 
-    print(f"Start embedding for Chunks aus: {file_name}...🟩")
+    print(f"Start embedding for Chunks for: {file_name}...🟩")
     for i, chunk in enumerate(chunks_mongo):
 
         # 4. Vektorisierung
@@ -47,14 +50,18 @@ def embedd_document(filepath):
         )
         chunk_count += 1
 
-    print(f"Embedding finished for Chunks aus: {file_name} -> {chunk_count}...🟩")
+    print(f"Embedding finished for Chunks of: {file_name} -> {chunk_count}...🟩")
 
     return batch_points, file_name
 
 def upload_document(filepath):
-    batch_points, file_name = embedd_document(filepath)
+    embedding = embedd_document(filepath)
+    if not embedding:
+        print("Skipping Qdrant Upload...🟠")
+        return
+    batch_points, file_name = embedding
     # 5. In Qdrant hochladen
     if batch_points:
         q_client.upsert(collection_name=COLLECTION_NAME, points=batch_points)
 
-    print(f"Ingestion finished for file: {file_name} ->  intelligente Chunks erstellt...🟩")
+    print(f"Ingestion finished for file: {file_name} ...🟩")

@@ -11,8 +11,8 @@ def start_ingestion():
     resolve_project_path(DOCS_PATH)
     path = resolve_project_path(DOCS_PATH)
 
-    if not os.path.exists(DOCS_PATH):
-        os.makedirs(DOCS_PATH)
+    if not os.path.exists(path):
+        os.makedirs(path)
         return
 
     files = [f for f in os.listdir(path) if f.endswith(('.pdf', '.txt', '.md'))]
