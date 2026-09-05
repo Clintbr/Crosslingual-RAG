@@ -1,9 +1,11 @@
+from nltk.corpus.reader import documents
 from qdrant_client import QdrantClient
 import requests
 import time
 from sentence_transformers import SentenceTransformer
 from pymongo import MongoClient
 from bson import ObjectId
+from torch.distributed.autograd import context
 
 from src.config import (
     MONGO_URI,
@@ -25,6 +27,7 @@ chunks_col = db["chunks"]
 q_client = QdrantClient(host=QDRANT_HOST, port=QDRANT_PORT)
 
 limit = 10
+
 
 # Mongo Fetch
 def fetch_chunks_from_mongo(hits):
@@ -50,19 +53,21 @@ def fetch_chunks_from_mongo(hits):
 
     return ordered
 
+
 # Embedding
 _embedder = SentenceTransformer(EMBED_MODEL)
+
 
 def embed_text(text: str):
     return _embedder.encode(text).tolist()
 
-# Query - Translation
-def translate_question(question: str, target_lang: str):
 
+# Query - Translation
+def translate_question(question: str, original_lang: str, target_lang: str):
     start = time.perf_counter()
 
     prompt = f"""
-        Translate the following question to {target_lang}.
+        Translate the following question from {original_lang} to {target_lang}.
         Return ONLY the translated question.
         
         Question:
@@ -74,8 +79,13 @@ def translate_question(question: str, target_lang: str):
         json={
             "model": TRANSLATION_MODEL,
             "prompt": prompt,
-            "stream": False
-        }
+            "stream": False,
+            "options": {
+                "temperature": 0.0,  # set to null to avoid high hallucination
+                "num_ctx": 4096  # big window for more context
+            }
+        },
+        timeout=120
     )
 
     response.raise_for_status()
@@ -84,34 +94,58 @@ def translate_question(question: str, target_lang: str):
 
     return translation, time.perf_counter() - start
 
+
+def build_context(docs: [], translated=False) -> str:
+    built_docs = docs
+    for document in built_docs:
+        source = f"Source:: {document['filename']} - Page {document['page']}: \n"
+        if translated:
+            content = source + document["translation"]
+        else:
+            content = source + document["content"]
+        document.update({"_built_context": content})
+
+    context = "\n\n".join(
+        b.get("_built_context", "")
+        for b in built_docs
+    )
+    return context
+
+
 # Document - Translation
 def translate_retrieved_doc(documents: [], target_lang: str):
-    translated_documents = []
+    translated_documents = documents
     start = time.perf_counter()
 
-    for document in documents:
+    for document in translated_documents:
         prompt = f"""
-            Translate the following document to {target_lang}.
+            Translate the following Text from {document.get("lang")} to {target_lang}.
             Return ONLY the translated question.
             
-            Question:
-            {document}
+            TEXT:
+            {document.get("content")}
         """
         response = requests.post(
             f"{OLLAMA_URL}/api/generate",
             json={
                 "model": TRANSLATION_MODEL,
                 "prompt": prompt,
-                "stream": False
-            }
+                "stream": False,
+                "options": {
+                    "temperature": 0.0,  # set to null to avoid high hallucination
+                    "num_ctx": 4096  # big window for more context
+                }
+            },
+            timeout=120
         )
 
         response.raise_for_status()
 
         translation = response.json().get("response", "").strip()
-        translated_documents.append(translation)
+        translated_documents.update({"translation": translation})
 
     return translated_documents, time.perf_counter() - start
+
 
 # Qdrant Search
 def search_qdrant(vector, lang=None):
@@ -136,12 +170,7 @@ def search_qdrant(vector, lang=None):
 
 
 # Answer Generation
-def generate_answer(question: str, chunks):
-
-    context = "\n\n".join(
-        c.get("content", "") if isinstance(c, dict) else str(c)
-        for c in chunks
-    )
+def generate_answer(question: str, context: str, target_lang: str):
 
     prompt = f"""
         You are a QA system.
@@ -164,8 +193,13 @@ def generate_answer(question: str, chunks):
         json={
             "model": GENERATION_MODEL,
             "prompt": prompt,
-            "stream": False
-        }
+            "stream": False,
+            "options": {
+                "temperature": 0.0,  # set to null to avoid high hallucination
+                "num_ctx": 4096  # big window for more context
+            }
+        },
+        timeout=120
     )
 
     response.raise_for_status()
