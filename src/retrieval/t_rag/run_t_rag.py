@@ -1,7 +1,8 @@
 import time
 
 from src.retrieval.retriever import (
-    translate_question, embed_text, search_qdrant, fetch_chunks_from_mongo, generate_answer)
+    embed_text, search_qdrant, fetch_chunks_from_mongo, generate_answer)
+from src.translator.query_translation import translate_question
 
 
 def run_trag_retrieval(question: str, doc_lang: str, generate=False):

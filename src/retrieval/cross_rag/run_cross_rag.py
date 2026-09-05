@@ -1,7 +1,8 @@
 import time
 
-from src.retrieval.retriever import embed_text, search_qdrant, fetch_chunks_from_mongo, generate_answer, \
-    translate_retrieved_doc
+from src.retrieval.retriever import (
+    embed_text, search_qdrant, fetch_chunks_from_mongo, generate_answer)
+from src.translator.document_translation import translate_retrieved_doc
 
 
 def run_cross_retrieval(question: str, doc_lang: str, generate=False):
@@ -27,7 +28,7 @@ def run_cross_retrieval(question: str, doc_lang: str, generate=False):
 
     if generate:
         start = time.perf_counter()
-        result["answer"] = generate_answer(question, chunks)
+        result["answer"] = generate_answer(question, chunks, doc_lang)
         result["generate_answer_time"] = time.perf_counter() - start
 
     return result

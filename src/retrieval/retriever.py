@@ -61,40 +61,6 @@ _embedder = SentenceTransformer(EMBED_MODEL)
 def embed_text(text: str):
     return _embedder.encode(text).tolist()
 
-
-# Query - Translation
-def translate_question(question: str, original_lang: str, target_lang: str):
-    start = time.perf_counter()
-
-    prompt = f"""
-        Translate the following question from {original_lang} to {target_lang}.
-        Return ONLY the translated question.
-        
-        Question:
-        {question}
-    """
-
-    response = requests.post(
-        f"{OLLAMA_URL}/api/generate",
-        json={
-            "model": TRANSLATION_MODEL,
-            "prompt": prompt,
-            "stream": False,
-            "options": {
-                "temperature": 0.0,  # set to null to avoid high hallucination
-                "num_ctx": 4096  # big window for more context
-            }
-        },
-        timeout=120
-    )
-
-    response.raise_for_status()
-
-    translation = response.json().get("response", "").strip()
-
-    return translation, time.perf_counter() - start
-
-
 def build_context(docs: [], translated=False) -> str:
     built_docs = docs
     for document in built_docs:
@@ -110,41 +76,6 @@ def build_context(docs: [], translated=False) -> str:
         for b in built_docs
     )
     return context
-
-
-# Document - Translation
-def translate_retrieved_doc(documents: [], target_lang: str):
-    translated_documents = documents
-    start = time.perf_counter()
-
-    for document in translated_documents:
-        prompt = f"""
-            Translate the following Text from {document.get("lang")} to {target_lang}.
-            Return ONLY the translated question.
-            
-            TEXT:
-            {document.get("content")}
-        """
-        response = requests.post(
-            f"{OLLAMA_URL}/api/generate",
-            json={
-                "model": TRANSLATION_MODEL,
-                "prompt": prompt,
-                "stream": False,
-                "options": {
-                    "temperature": 0.0,  # set to null to avoid high hallucination
-                    "num_ctx": 4096  # big window for more context
-                }
-            },
-            timeout=120
-        )
-
-        response.raise_for_status()
-
-        translation = response.json().get("response", "").strip()
-        translated_documents.update({"translation": translation})
-
-    return translated_documents, time.perf_counter() - start
 
 
 # Qdrant Search
