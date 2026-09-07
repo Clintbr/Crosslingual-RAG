@@ -1,39 +1,21 @@
 import time
-import requests
 
-from src.config import OLLAMA_URL, TRANSLATION_MODEL
+from src.api.ollama_api import send_to_ollama
+from src.config import TRANSLATION_MODEL, RETRIEVAL_PHASES
+from src.prompts.prompt_templates import prompt_translate_text, prompt_translate_question
 
 
 def translate_question(question: str, original_lang: str, target_lang: str):
     start = time.perf_counter()
+    prompt = prompt_translate_question(original_lang, target_lang, question)
+    response = send_to_ollama(TRANSLATION_MODEL, prompt, RETRIEVAL_PHASES[0])
 
-    prompt = f"""
-        Translate the following question from {original_lang} to {target_lang}.
-        Return ONLY the translated question.
-        
-        Question:
-        {question}
-    """
+    return response, time.perf_counter() - start
 
-    response = requests.post(
-        f"{OLLAMA_URL}/api/generate",
-        json={
-            "model": TRANSLATION_MODEL,
-            "prompt": prompt,
-            "stream": False,
-            "options": {
-                "temperature": 0.0,  # set to null to avoid high hallucination
-                "num_ctx": 4096  # big window for more context
-            }
-        },
-        timeout=120
-    )
+def translate_answer_back(answer: str, original_lang: str, target_lang: str):
 
-    response.raise_for_status()
+    start = time.perf_counter()
+    prompt = prompt_translate_text(original_lang, target_lang, answer)
+    response = send_to_ollama(TRANSLATION_MODEL, prompt, RETRIEVAL_PHASES[2])
 
-    translation = response.json().get("response", "").strip()
-
-    return translation, time.perf_counter() - start
-
-def translate_answer_back():
-    return
+    return response, time.perf_counter() - start

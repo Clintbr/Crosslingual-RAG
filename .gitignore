@@ -8,3 +8,5 @@
 /dataSources.local.xml
 .env
 .idea/
+# config Datei, replace the usual .env because there are no sensible data like API Keys in that project
+config.py

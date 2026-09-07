@@ -1,6 +1,3 @@
-from src.config import (
-    DE, EN, FR)
-
 ## the following prompts are written based on Zero-Shot-Prompting
 
 def print_lang(lang:str):
@@ -54,7 +51,7 @@ def prompt_generate_response (target_lang, question, context) -> str:
         f"and you must formulate your entire response exclusively in {to_lang}.\n"
         "Strict execution rules:"
         f"1. MANDATORY LANGUAGE: Write your entire response in {to_lang}. Even if the provided context or the question is in another language, the final output must be 100% in {to_lang}.\n"
-        f"2. STRICT TRUTH-FULNESS: Rely solely on the clear facts mentioned in the PROVIDED CONTEXT. Do not assume, extrapolate, or use outside knowledge\n."
+        f"2. STRICT TRUTH-FULLNESS: Rely solely on the clear facts mentioned in the PROVIDED CONTEXT. Do not assume, extrapolate, or use outside knowledge\n."
         "3. MISSING INFORMATION ALGORITHM: If the context does not contain the answer to the question, do not attempt to guess. Reply exactly with: I cannot find the answer in the provided documents.\n"
         "4. ZERO-SHOT DIRECTNESS: Do not include introductory phrases (like Based on the text...), explanations, or conversational filler. Start directly with the answer.\n\n"
 
