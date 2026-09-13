@@ -1,3 +1,80 @@
+"""
+Dieses Modul implementiert die Dokumenten-Ingestion-Pipeline für die Chunk-Datenbank.
+
+Ablauf:
+
+1. MongoDB-Verbindung:
+   Es wird eine Verbindung zur MongoDB aufgebaut (MONGO_URI, DB_NAME) und zwei
+   Collections referenziert:
+     - "chunks": speichert die einzelnen Text-Chunks
+     - "processed_files": speichert Metadaten zu bereits verarbeiteten Dateien
+       (dient als Deduplizierungs-Register)
+
+2. Text-Splitter-Konfiguration:
+   Ein RecursiveCharacterTextSplitter wird mit chunk_size=800 und chunk_overlap=0
+   initialisiert. Er versucht, Text bevorzugt an Absätzen ("\n\n") und Zeilenumbrüchen
+   ("\n") zu trennen, um möglichst sinnvolle (nicht mitten im Satz abgeschnittene)
+   Chunks zu erzeugen.
+
+3. get_file_hash(filepath):
+   Berechnet einen MD5-Hash über den kompletten Dateiinhalt. Dieser Hash dient als
+   eindeutiger Fingerabdruck der Datei, um bereits verarbeitete Dokumente zu erkennen
+   (unabhängig vom Dateinamen).
+
+4. chunk_document(filepath):
+   Hauptfunktion der Pipeline, verarbeitet eine einzelne Datei:
+
+   a) Vorbereitung:
+      - Extrahiert den Dateinamen und berechnet den Datei-Hash.
+      - Prüft in "processed_files", ob dieser Hash bereits existiert. Falls ja,
+        wird die Verarbeitung übersprungen (Deduplizierung) und die Funktion bricht
+        mit None ab.
+
+   b) Textextraktion (Schritt 1):
+      - Nutzt `unstructured.partition.auto.partition`, um den Dateiinhalt in einzelne
+        strukturierte Elemente zu zerlegen.
+      - Für PDFs wird die Strategie "hi_res" verwendet (genauere, aber langsamere
+        Analyse inkl. Layout-/OCR-Erkennung), für alle anderen Dateitypen "auto"
+        (automatische Strategiewahl durch unstructured).
+
+   c) Seitenweise Gruppierung (Schritt 2):
+      - Die extrahierten Elemente enthalten Metadaten, u. a. die Seitenzahl
+        (page_number). Der Text aller Elemente wird pro Seite zusammengefügt,
+        sodass am Ende ein Dictionary {seitenzahl: gesamter_seitentext} entsteht.
+      - Damit wird sichergestellt, dass Chunking später nicht seitenübergreifend
+        erfolgt, sondern die Seitenzuordnung für jeden Chunk erhalten bleibt.
+
+   d) Chunking pro Seite (Schritt 3):
+      - Für jede Seite wird geprüft, ob der Text (nach Trimmen) mindestens 10 Zeichen
+        lang ist; sehr kurze/leere Seiten werden übersprungen.
+      - Der Seitentext wird mit dem RecursiveCharacterTextSplitter in kleinere,
+        semantisch sinnvolle Chunks (max. 800 Zeichen) zerlegt.
+      - Für jeden erzeugten Chunk wird ein MongoDB-Dokument mit folgenden Feldern
+        gebaut: Dateiname, Datei-Hash, Chunk-Inhalt, Sprache (aus den ersten beiden
+        Zeichen des Dateinamens abgeleitet, z. B. "en_..." -> "en"), Seitenzahl und
+        fortlaufender Chunk-Index.
+      - Das Dokument wird sofort in die "chunks"-Collection eingefügt; die von
+        MongoDB vergebene _id wird anschließend dem lokalen Dict hinzugefügt und das
+        Dokument der Rückgabeliste `chunks_mongo` angehängt.
+      - Ein globaler Zähler `chunk_count` wird über alle Seiten hinweg hochgezählt,
+        sodass jeder Chunk innerhalb der Datei einen eindeutigen, fortlaufenden Index
+        erhält.
+
+   e) Abschluss (Schritt 4):
+      - Nach Verarbeitung aller Seiten wird ein Eintrag in "processed_files" angelegt
+        (Dateiname, Hash, Sprache, Verarbeitungszeitpunkt). Dieser Eintrag verhindert
+        bei einem erneuten Lauf, dass dieselbe Datei doppelt verarbeitet wird.
+      - Es wird eine Erfolgsmeldung mit der Gesamtanzahl gespeicherter Chunks
+        ausgegeben.
+      - Die Funktion gibt die Liste aller erzeugten Chunk-Dokumente (inkl. Mongo-IDs)
+        zurück.
+
+Kurz zusammengefasst: Die Pipeline liest eine Datei ein, extrahiert und strukturiert
+ihren Text seitenweise, teilt jede Seite in überlappungsfreie Chunks von max. 800
+Zeichen, speichert jeden Chunk als eigenes Dokument in MongoDB und vermerkt die Datei
+danach als "bereits verarbeitet", um Mehrfachverarbeitung zu vermeiden.
+"""
+
 import os
 import hashlib
 from pymongo import MongoClient
@@ -24,8 +101,8 @@ files_col = db["processed_files"]
 
 text_splitter = RecursiveCharacterTextSplitter(
     chunk_size=800,
-    chunk_overlap=160,
-    separators=["\n\n", "\n", ".", " ", ""]
+    chunk_overlap=0,
+    separators=["\n\n", "\n"]
 )
 
 def get_file_hash(filepath):

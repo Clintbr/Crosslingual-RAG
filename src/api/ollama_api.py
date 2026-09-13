@@ -1,33 +1,33 @@
+"""
+Send a prompt to Ollama and return a consistent result.
+
+Return
+    {
+        "success": True,
+        "response": "...",
+        "error": None
+    }
+
+    or
+
+    {
+        "success": False,
+        "response": None,
+        "error": {
+            "phase": "...",
+            "type": "...",
+            "message": "...",
+            "status_code": ...,
+        }
+    }
+"""
+
 import requests
 
 from src.config import OLLAMA_URL
 
 
-
 def send_to_ollama(model, prompt, phase):
-    """
-    Send a prompt to Ollama and return a consistent result.
-
-    Return
-        {
-            "success": True,
-            "response": "...",
-            "error": None
-        }
-
-        or
-
-        {
-            "success": False,
-            "response": None,
-            "error": {
-                "phase": "...",
-                "type": "...",
-                "message": "...",
-                "status_code": ...,
-            }
-        }
-    """
 
     if not model:
         return {

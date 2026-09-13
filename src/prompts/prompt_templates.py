@@ -21,7 +21,7 @@ def prompt_translate_question(original_lang, target_lang, question) -> str:
         f"2. Adapt the sentence structure naturally to fit the native phrasing of {to_lang}, avoiding awkward, literal word-for-word translations.\n"
         f"3. Ensure that it remains a natural sounding question in {to_lang}.\n"
         "4. Output ONLY the final translated question. Do not include any introductions, explanations, notes, or quotation marks.\n\n"
-        "Question to translate:"
+        "Question to translate:\n"
         f"{question}"
     )
 
@@ -36,8 +36,8 @@ def prompt_translate_text (original_lang, target_lang, text) -> str:
         "Strictly follow these execution rules:"
         "1. Maintain the exact original meaning, intent, and tone of the text.\n"
         f"2. Adapt the sentence structure naturally to fit the native phrasing of {to_lang}, avoiding awkward, literal word-for-word translations.\n"
-        "3. Output ONLY the final translated text. Do not include any introductions, explanations, notes, or quotation marks.\n\n"
-        "Question to translate:"
+        "3. Output ONLY the final translated text. Do not include any introductions, explanations, notes, or quotation marks. Even if the text is a single word just return the translated single word\n\n"
+        "TEXT to translate:\n"
         f"{text}"
     )
 

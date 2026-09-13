@@ -6,17 +6,17 @@ from qdrant_client.models import Distance, VectorParams, PointStruct
 
 from src.chunking.chunker import chunk_document
 from src.config import (
-    QDRANT_PORT, QDRANT_HOST, EMBED_MODEL, COLLECTION_NAME
+    QDRANT_PORT, QDRANT_HOST, EMBED_MODEL, COLLECTION_NAME, VECTOR_DIMENSION
 )
 
 q_client = QdrantClient(QDRANT_HOST, port=QDRANT_PORT)
-embedder = SentenceTransformer(EMBED_MODEL)
-
 if not q_client.collection_exists(COLLECTION_NAME):
     q_client.create_collection(
         collection_name=COLLECTION_NAME,
-        vectors_config=VectorParams(size=384, distance=Distance.COSINE),
+        vectors_config=VectorParams(size=VECTOR_DIMENSION, distance=Distance.COSINE),
     )
+
+embedder = SentenceTransformer(EMBED_MODEL)
 
 def embedd_document(filepath):
     chunks_mongo = chunk_document(filepath)
@@ -30,7 +30,7 @@ def embedd_document(filepath):
     print(f"Start embedding for Chunks for: {file_name}...🟩")
     for i, chunk in enumerate(chunks_mongo):
 
-        # 4. Vektorisierung
+        # Vektorisierung
         vector = embedder.encode(chunk.get('content')).tolist()
 
         # Eindeutige ID für Qdrant erzeugen

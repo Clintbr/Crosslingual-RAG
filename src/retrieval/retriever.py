@@ -19,7 +19,7 @@ chunks_col = db["chunks"]
 
 q_client = QdrantClient(host=QDRANT_HOST, port=QDRANT_PORT)
 
-limit = 10
+limit = 5
 
 # Query-Embedding
 _embedder = SentenceTransformer(EMBED_MODEL)
@@ -73,7 +73,7 @@ def fetch_chunks_from_mongo(hits):
 
     return ordered
 
-def build_context(docs: [], translated=False) -> str:
+def build_context(docs: [], translated=False) -> [str,list[str]]:
     built_context = []
     for document in docs:
         source = f"Source:: {document['filename']} - Page {document['page']}: \n"
@@ -87,4 +87,4 @@ def build_context(docs: [], translated=False) -> str:
         b
         for b in built_context
     )
-    return context
+    return context, built_context
