@@ -84,6 +84,7 @@ Crosslingual-RAG/
   ollama pull <EMBEDDING_MODEL>
   ```
 - **Tesseract OCR**: Installed (default path: `C:\Program Files\Tesseract-OCR`)
+- **config.example.py**: the file should be changed to config.py and then completed with the chosen configuration like (model, port or languages)
 
 ### Installation
 ```bash
