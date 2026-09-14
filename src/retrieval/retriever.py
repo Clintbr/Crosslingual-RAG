@@ -17,7 +17,7 @@ m_client = MongoClient(MONGO_URI)
 db = m_client[DB_NAME]
 chunks_col = db["chunks"]
 
-q_client = QdrantClient(host=QDRANT_HOST, port=QDRANT_PORT)
+q_client = QdrantClient(host=QDRANT_HOST, port=QDRANT_PORT, check_compatibility=False)
 
 limit = 5
 

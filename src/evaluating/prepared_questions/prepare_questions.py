@@ -300,7 +300,7 @@ def prepare_trag(question_sets):
 
     print(f"  Saved 6 tRAG datasets in: {TRAG_DIR}")
 
-def main():
+def prepare_questions_for_evaluation():
 
     print("Loading question datasets...")
 
@@ -331,4 +331,4 @@ def main():
 
 
 if __name__ == "__main__":
-    main()
+    prepare_questions_for_evaluation()

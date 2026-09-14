@@ -358,7 +358,7 @@ def build_statistics(
     return summary
 
 
-def main() -> None:
+def run_loader_squad() -> None:
     parser = argparse.ArgumentParser(description=__doc__)
 
     parser.add_argument(
@@ -449,4 +449,4 @@ def main() -> None:
 
 
 if __name__ == "__main__":
-    main()
+    run_loader_squad()

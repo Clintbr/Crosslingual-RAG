@@ -9,7 +9,7 @@ from src.config import (
     QDRANT_PORT, QDRANT_HOST, EMBED_MODEL, COLLECTION_NAME, VECTOR_DIMENSION
 )
 
-q_client = QdrantClient(QDRANT_HOST, port=QDRANT_PORT)
+q_client = QdrantClient(QDRANT_HOST, port=QDRANT_PORT, check_compatibility=False)
 if not q_client.collection_exists(COLLECTION_NAME):
     q_client.create_collection(
         collection_name=COLLECTION_NAME,

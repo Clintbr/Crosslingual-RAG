@@ -21,7 +21,3 @@ def merge_txt_files(directory, target_directory, lang, files_num):
                 outfile.write(content)
 
         print(f"Created: {output_file}")
-
-
-if __name__ == "__main__":
-    merge_txt_files("src/ingestion/squad_fr_export/contexts/fr", "src/ingestion/squad_fr_export/contexts/a", "fr", files_num=26)
