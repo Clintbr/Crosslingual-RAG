@@ -29,13 +29,13 @@ graph TD
     Multi --> DB
     Cross --> DB
 
-    DB --> Gen["Generation Engine (Ollama / Gemma3 / Llama3)"]
+    DB --> Gen["Generation Engine (Ollama)"]
     Gen --> Eval["Evaluation & Analysis Engine (RAGAS + Hardware Profiler)"]
 ```
 
 ### Strategy Summary
 - **MonoRAG**: Monolingual control benchmark (Query, index, and answer generated in the same target language).
-- **tRAG (Translate-RAG)**: Uses machine translation (via Ollama/Llama 3) to bridge language gaps between query and foreign context.
+- **tRAG (Translate-RAG)**: Uses machine translation (via Ollama) to bridge language gaps between query and foreign context.
 - **MultiRAG**: Queries multi-language collections and aggregates candidate chunks across language boundaries.
 - **CrossRAG**: Direct cross-lingual semantic search within a shared multilingual embedding space (`all-MiniLM-L6-v2` / `nomic-embed-text`).
 
