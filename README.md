@@ -72,6 +72,9 @@ cd Crosslingual-RAG
 
 # Install dependencies
 pip install -r requirements.txt
+
+# Copy Congig File and fill it
+cp /src/config.example.py /src/config.py
 ```
 
 ---
