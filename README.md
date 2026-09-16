@@ -8,30 +8,8 @@ An end-to-end framework for evaluating, comparing, and analyzing **Crosslingual 
 
 This benchmark quantitatively evaluates four distinct retrieval strategies across languages (English, German, French) assessing retrieval quality, generation fidelity, latency, and hardware overhead:
 
-```mermaid
-graph TD
-    UserQuery["Multilingual Query (EN / DE / FR)"]
-    
-    subgraph "Evaluated RAG Architectures"
-        Mono["1. MonoRAG<br/>(Monolingual baseline)"]
-        TRAG["2. tRAG<br/>(Query / Context Translation via LLM)"]
-        Multi["3. MultiRAG<br/>(Multilingual corpus search)"]
-        Cross["4. CrossRAG<br/>(Cross-lingual dense vector retrieval)"]
-    end
+<img width="907" height="531" alt="Architekturdiagramm_Versuchsumgebung" src="https://github.com/user-attachments/assets/59960f04-d5d7-46be-82c3-9449472e237c" />
 
-    UserQuery --> Mono
-    UserQuery --> TRAG
-    UserQuery --> Multi
-    UserQuery --> Cross
-
-    Mono --> DB[("MongoDB (Text) & Qdrant (Vectors)")]
-    TRAG --> DB
-    Multi --> DB
-    Cross --> DB
-
-    DB --> Gen["Generation Engine (Ollama)"]
-    Gen --> Eval["Evaluation & Analysis Engine (RAGAS + Hardware Profiler)"]
-```
 
 ### Strategy Summary
 - **MonoRAG**: Monolingual control benchmark (Query, index, and answer generated in the same target language).
