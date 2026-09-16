@@ -126,8 +126,8 @@ python main.py --all
 - **Answer Quality**: `Faithfulness`, `Answer Relevancy`, `Answer Correctness`
 
 ### Hardware & Efficiency Metrics
-- **Memory & Compute**: Average / Peak RAM (MB), Average / Peak CPU (%)
-- **Latency Breakdown**: Query Translation, Retrieval, Document Translation, Generation, Total Time
+- **Memory & Compute**: `Average / Peak RAM (MB)`, `Average / Peak CPU (%)`
+- **Latency Breakdown**: `Query Translation Time`, `Retrieval Time`, `Document Translation Time`, `Generation Time`, `Total Time`
 
 ### Output Artifacts
 Results are exported to `src/evaluating/analysis_results/`:
@@ -138,7 +138,7 @@ Results are exported to `src/evaluating/analysis_results/`:
 
 ## 7. Project Owner Formular & Verification Matrix
 
-> **Note for the Project Owner / Thesis Supervisor**: This section serves as the formal project metadata, environment record, and evaluation handoff checklist.
+> **Note for the Project Owner and Thesis Supervisor**: This section serves as the formal project metadata and environment record.
 
 ### Project Information Formular
 
@@ -147,7 +147,8 @@ Results are exported to `src/evaluating/analysis_results/`:
 | **Project Title** | Systematical Evaluation of Crosslingual RAG Architectures                          |
 | **Author / Student** | Clint Bryan Nguena                                                                 |
 | **Supervisor / Reviewer** | Herr M.Sc. Manuel Groh                                                             |
+| **Co-Reviewer** | Herr Prof. Dr. Dennis Priefer                                                            |
 | **Institution** | Technische Hochschule Mittelhessen, Gießen (Institut für Informationswissenschaft) |
 | **Degree / Program** | Bachelor of Science (B.Sc.) in Computer Science                                    |
 | **Repository URL** | `https://github.com/Clintbr/Crosslingual-RAG`                                      |
-| **Submission Date** | 14 September 2026                                                                  |
+| **Submission Date** | 16 September 2026                                                                  |
