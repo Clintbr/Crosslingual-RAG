@@ -8,30 +8,8 @@ An end-to-end framework for evaluating, comparing, and analyzing **Crosslingual 
 
 This benchmark quantitatively evaluates four distinct retrieval strategies across languages (English, German, French) assessing retrieval quality, generation fidelity, latency, and hardware overhead:
 
-```mermaid
-graph TD
-    UserQuery["Multilingual Query (EN / DE / FR)"]
-    
-    subgraph "Evaluated RAG Architectures"
-        Mono["1. MonoRAG<br/>(Monolingual baseline)"]
-        TRAG["2. tRAG<br/>(Query / Context Translation via LLM)"]
-        Multi["3. MultiRAG<br/>(Multilingual corpus search)"]
-        Cross["4. CrossRAG<br/>(Cross-lingual dense vector retrieval)"]
-    end
+<img width="907" height="531" alt="Architekturdiagramm_Versuchsumgebung" src="https://github.com/user-attachments/assets/59960f04-d5d7-46be-82c3-9449472e237c" />
 
-    UserQuery --> Mono
-    UserQuery --> TRAG
-    UserQuery --> Multi
-    UserQuery --> Cross
-
-    Mono --> DB[("MongoDB (Text) & Qdrant (Vectors)")]
-    TRAG --> DB
-    Multi --> DB
-    Cross --> DB
-
-    DB --> Gen["Generation Engine (Ollama)"]
-    Gen --> Eval["Evaluation & Analysis Engine (RAGAS + Hardware Profiler)"]
-```
 
 ### Strategy Summary
 - **MonoRAG**: Monolingual control benchmark (Query, index, and answer generated in the same target language).
@@ -94,6 +72,9 @@ cd Crosslingual-RAG
 
 # Install dependencies
 pip install -r requirements.txt
+
+# Copy Congig File and fill it
+cp /src/config.example.py /src/config.py
 ```
 
 ---
@@ -148,8 +129,8 @@ python main.py --all
 - **Answer Quality**: `Faithfulness`, `Answer Relevancy`, `Answer Correctness`
 
 ### Hardware & Efficiency Metrics
-- **Memory & Compute**: Average / Peak RAM (MB), Average / Peak CPU (%)
-- **Latency Breakdown**: Query Translation, Retrieval, Document Translation, Generation, Total Time
+- **Memory & Compute**: `Average / Peak RAM (MB)`, `Average / Peak CPU (%)`
+- **Latency Breakdown**: `Query Translation Time`, `Retrieval Time`, `Document Translation Time`, `Generation Time`, `Total Time`
 
 ### Output Artifacts
 Results are exported to `src/evaluating/analysis_results/`:
@@ -160,7 +141,7 @@ Results are exported to `src/evaluating/analysis_results/`:
 
 ## 7. Project Owner Formular & Verification Matrix
 
-> **Note for the Project Owner / Thesis Supervisor**: This section serves as the formal project metadata, environment record, and evaluation handoff checklist.
+> **Note for the Project Owner and Thesis Supervisor**: This section serves as the formal project metadata and environment record.
 
 ### Project Information Formular
 
@@ -169,7 +150,8 @@ Results are exported to `src/evaluating/analysis_results/`:
 | **Project Title** | Systematical Evaluation of Crosslingual RAG Architectures                          |
 | **Author / Student** | Clint Bryan Nguena                                                                 |
 | **Supervisor / Reviewer** | Herr M.Sc. Manuel Groh                                                             |
+| **Co-Reviewer** | Herr Prof. Dr. Dennis Priefer                                                            |
 | **Institution** | Technische Hochschule Mittelhessen, Gießen (Institut für Informationswissenschaft) |
 | **Degree / Program** | Bachelor of Science (B.Sc.) in Computer Science                                    |
 | **Repository URL** | `https://github.com/Clintbr/Crosslingual-RAG`                                      |
-| **Submission Date** | 14 September 2026                                                                  |
+| **Submission Date** | 16 September 2026                                                                  |
