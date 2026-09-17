@@ -19,17 +19,16 @@ from typing import Callable, Optional
 import tkinter as tk
 from tkinter import ttk, messagebox, filedialog
 
-# Step 1: data fetching from squad_fr
-def run_load_data_squad_fr():
-    from src.ingestion.loading.load_squad_fr import run_loader_squad
-    run_loader_squad()
 
-
-# Step 2: data fetching from xquad
+# Step 1: data fetching from xquad
 def run_load_data_xquad():
     from src.ingestion.loading.load_xquad_en_de import run_loader_xquad
     run_loader_xquad()
 
+# Step 2: data fetching from squad_fr
+def run_load_data_squad_fr():
+    from src.ingestion.loading.load_squad_fr import run_loader_squad
+    run_loader_squad()
 
 # Step 3: preparing documents for dbs (mongo and qdrant)
 def run_merger_and_converter():
@@ -93,21 +92,21 @@ def run_analyse_rag_tests_results():
 steps = [
     {
         "step": 1,
-        "name": "Fetch SQuAD FR",
-        "description": "data fetching from squad_fr",
-        "phase": "Ingestion",
-        "enabled": True,
-        "is_critical": False,
-        "func": run_load_data_squad_fr,
-    },
-    {
-        "step": 2,
         "name": "Fetch XQuAD",
         "description": "data fetching from xquad",
         "phase": "Ingestion",
         "enabled": True,
         "is_critical": False,
         "func": run_load_data_xquad,
+    },
+    {
+        "step": 2,
+        "name": "Fetch SQuAD FR",
+        "description": "data fetching from squad_fr",
+        "phase": "Ingestion",
+        "enabled": True,
+        "is_critical": False,
+        "func": run_load_data_squad_fr,
     },
     {
         "step": 3,
