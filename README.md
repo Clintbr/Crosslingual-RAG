@@ -10,6 +10,8 @@ This benchmark quantitatively evaluates four distinct retrieval strategies acros
 
 <img width="907" height="531" alt="Architekturdiagramm_Versuchsumgebung" src="https://github.com/user-attachments/assets/59960f04-d5d7-46be-82c3-9449472e237c" />
 
+### Detailed Diagram
+[Architectural diagram](https://gitdiagram.com/clintbr/crosslingual-rag)
 
 ### Strategy Summary
 - **MonoRAG**: Monolingual control benchmark (Query, index, and answer generated in the same target language).
@@ -148,10 +150,12 @@ Results are exported to `src/evaluating/analysis_results/`:
 | Attribute | Specification                                                                      |
 | :--- |:-----------------------------------------------------------------------------------|
 | **Project Title** | Systematical Evaluation of Crosslingual RAG Architectures                          |
+| **Country** | Germany                          |
+| **City** | Gießen                         |
 | **Author / Student** | Clint Bryan Nguena                                                                 |
 | **Supervisor / Reviewer** | Herr M.Sc. Manuel Groh                                                             |
 | **Co-Reviewer** | Herr Prof. Dr. Dennis Priefer                                                            |
 | **Institution** | Technische Hochschule Mittelhessen, Gießen (Institut für Informationswissenschaft) |
 | **Degree / Program** | Bachelor of Science (B.Sc.) in Computer Science                                    |
-| **Repository URL** | `https://github.com/Clintbr/Crosslingual-RAG`                                      |
-| **Submission Date** | 16 September 2026                                                                  |
+| **Repository URL** | [https://github.com/Clintbr/Crosslingual-RAG](https://github.com/Clintbr/Crosslingual-RAG)                                      |
+| **Submission Date** | 23 September 2026                                                                  |
