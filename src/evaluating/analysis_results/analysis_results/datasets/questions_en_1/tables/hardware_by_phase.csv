@@ -1,0 +1,3 @@
+﻿method,phase,avg_ram_mb,peak_ram_mb,avg_cpu_percent,peak_cpu_percent
+MultiRAG,generation,86.95509119293911,88.104453125,93.51017915483973,99.96600000000001
+MultiRAG,total,86.96058973737652,88.120546875,93.465054642859,99.977

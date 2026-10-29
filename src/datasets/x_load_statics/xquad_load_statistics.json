@@ -1,0 +1,60 @@
+{
+  "requested_languages": [
+    "en",
+    "de"
+  ],
+  "dataset": "google/xquad",
+  "split": "validation",
+  "per_language": {
+    "en": {
+      "available_in_xquad": true,
+      "num_questions_loaded": 1190,
+      "num_unique_contexts": 240,
+      "question_length_chars": {
+        "mean": 61.1,
+        "min": 15,
+        "max": 197
+      },
+      "answer_length_chars": {
+        "mean": 19.0,
+        "min": 1,
+        "max": 149
+      },
+      "context_length_chars": {
+        "mean": 784.8,
+        "min": 158,
+        "max": 3326
+      }
+    },
+    "de": {
+      "available_in_xquad": true,
+      "num_questions_loaded": 1190,
+      "num_unique_contexts": 240,
+      "question_length_chars": {
+        "mean": 68.9,
+        "min": 15,
+        "max": 197
+      },
+      "answer_length_chars": {
+        "mean": 21.3,
+        "min": 1,
+        "max": 170
+      },
+      "context_length_chars": {
+        "mean": 894.1,
+        "min": 186,
+        "max": 3884
+      }
+    }
+  },
+  "parallelism_check": {
+    "languages_compared": [
+      "de",
+      "en"
+    ],
+    "ids_common_to_all_requested_languages": 1190,
+    "ids_in_union_of_all_languages": 1190,
+    "fully_parallel": true
+  },
+  "total_questions_loaded": 2380
+}

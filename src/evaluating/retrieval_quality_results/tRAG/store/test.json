@@ -1,0 +1,182 @@
+[
+  {
+    "id": "56beb4343aeaaa14008c925bfg",
+    "question": "Wie viele Punkte gab die Verteidigung der Panthers ab?",
+    "question_lang": "de",
+    "answer": "308",
+    "context_lang": "en",
+    "context": "The Panthers defense gave up just 308 points, ranking sixth in the league, while also leading the NFL in interceptions with 24 and boasting four Pro Bowl selections. Pro Bowl defensive tackle Kawann Short led the team in sacks with 11, while also forcing three fumbles and recovering two. Fellow lineman Mario Addison added 6½ sacks. The Panthers line also featured veteran defensive end Jared Allen, a 5-time pro bowler who was the NFL's active career sack leader with 136, along with defensive end Kony Ealy, who had 5 sacks in just 9 starts. Behind them, two of the Panthers three starting linebackers were also selected to play in the Pro Bowl: Thomas Davis and Luke Kuechly. Davis compiled 5½ sacks, four forced fumbles, and four interceptions, while Kuechly led the team in tackles (118) forced two fumbles, and intercepted four passes of his own. Carolina's secondary featured Pro Bowl safety Kurt Coleman, who led the team with a career high seven interceptions, while also racking up 88 tackles and Pro Bowl cornerback Josh Norman, who developed into a shutdown corner during the season and had four interceptions, two of which were returned for touchdowns.",
+    "rag_result": {
+      "question": "Wie viele Punkte gab die Verteidigung der Panthers ab?",
+      "translated_question": "How many points did the Panthers' defense give up?",
+      "answer": "308",
+      "retrieval_type": "tRAG",
+      "error": null,
+      "hits": [
+        {
+          "id": "a1880d26-0e1e-d604-358e-c4972b719a82",
+          "version": 14,
+          "score": 0.6222151,
+          "payload": {
+            "mongo_id": "6aa01ae0de46c52b7222abcf",
+            "filename": "en_converted_3.pdf",
+            "lang": "en",
+            "page": 1
+          },
+          "vector": null,
+          "shard_key": null,
+          "order_value": null
+        },
+        {
+          "id": "f337422a-e520-9822-5596-28ef60461039",
+          "version": 19,
+          "score": 0.5498713,
+          "payload": {
+            "mongo_id": "6aa01b6ade46c52b7222ac66",
+            "filename": "en_converted_8.pdf",
+            "lang": "en",
+            "page": 2
+          },
+          "vector": null,
+          "shard_key": null,
+          "order_value": null
+        },
+        {
+          "id": "b77562bd-43a8-01b5-4665-c4267acf3d9a",
+          "version": 14,
+          "score": 0.31026316,
+          "payload": {
+            "mongo_id": "6aa01ae0de46c52b7222abd3",
+            "filename": "en_converted_3.pdf",
+            "lang": "en",
+            "page": 1
+          },
+          "vector": null,
+          "shard_key": null,
+          "order_value": null
+        },
+        {
+          "id": "da23270b-e3e9-b309-dd26-38c29ee2b69e",
+          "version": 14,
+          "score": 0.21799389,
+          "payload": {
+            "mongo_id": "6aa01ae0de46c52b7222abd0",
+            "filename": "en_converted_3.pdf",
+            "lang": "en",
+            "page": 1
+          },
+          "vector": null,
+          "shard_key": null,
+          "order_value": null
+        },
+        {
+          "id": "7ed12397-21b5-82ed-bd51-2ea57c1277f2",
+          "version": 17,
+          "score": 0.19846584,
+          "payload": {
+            "mongo_id": "6aa01b31de46c52b7222ac2b",
+            "filename": "en_converted_6.pdf",
+            "lang": "en",
+            "page": 2
+          },
+          "vector": null,
+          "shard_key": null,
+          "order_value": null
+        }
+      ],
+      "chunks": [
+        {
+          "_id": "6aa01ae0de46c52b7222abcf",
+          "filename": "en_converted_3.pdf",
+          "file_hash": "3e1b478e55c47c1b062a51bff3ee6ea4",
+          "content": "\nWith 4:51 left in regulation, Carolina got the ball on their own 24-yard line with a chance to mount a game-winning drive, and soon faced 3rd-and-9. On the next play, Miller stripped the ball away from Newton, and after several players dove for it, it took a long bounce backwards and was recovered by Ward, who returned it five yards to the Panthers 4-yard line. Although several players dove into the pile to attempt to recover it, Newton did not and his lack of aggression later earned him heavy criticism. Meanwhile, Denver's offense was kept out of the end zone for three plays, but a holding penalty on cornerback Josh Norman gave the Broncos a new set of downs. Then Anderson scored on a 2-yard touchdown run and Manning completed a pass to Bennie Fowler for a 2-point conversion, giving Denver a 24–10 lead with 3:08 left and essentially putting the game away. Carolina had two more drives, but failed to get a first down on each one.",
+          "lang": "en",
+          "page": 1,
+          "chunk_index": 0
+        },
+        {
+          "_id": "6aa01b6ade46c52b7222ac66",
+          "filename": "en_converted_8.pdf",
+          "file_hash": "508f1ab4653fc4d04990dc3facac358d",
+          "content": "\nThe Panthers defense gave up just 308 points, ranking sixth in the league, while also leading the NFL in interceptions with 24 and boasting four Pro Bowl selections. Pro Bowl defensive tackle Kawann Short led the team in sacks with 11, while also forcing three fumbles and recovering two. Fellow lineman Mario Addison added 6½ sacks. The Panthers line also featured veteran defensive end Jared Allen, a 5-time pro bowler who was the NFL's active career sack leader with 136, along with defensive end Kony Ealy, who had 5 sacks in just 9 starts. Behind them, two of the Panthers three starting linebackers were also selected to play in the Pro Bowl: Thomas Davis and Luke Kuechly. Davis compiled 5½ sacks, four forced fumbles, and four interceptions, while Kuechly led the team in tackles (118) forced two fumbles, and intercepted four passes of his own. Carolina's secondary featured Pro Bowl safety Kurt Coleman, who led the team with a career high seven interceptions, while also racking up 88 tackles and Pro Bowl cornerback Josh Norman, who developed into a shutdown corner during the season and had four interceptions, two of which were returned for touchdowns.",
+          "lang": "en",
+          "page": 2,
+          "chunk_index": 9
+        },
+        {
+          "_id": "6aa01ae0de46c52b7222abd3",
+          "filename": "en_converted_3.pdf",
+          "file_hash": "3e1b478e55c47c1b062a51bff3ee6ea4",
+          "content": "The Broncos defeated the Pittsburgh Steelers in the divisional round, 23–16, by scoring 11 points in the final three minutes of the game. They then beat the defending Super Bowl XLIX champion New England Patriots in the AFC Championship Game, 20–18, by intercepting a pass on New England's 2-point conversion attempt with 17 seconds left on the clock. Despite Manning's problems with interceptions during the season, he didn't throw any in their two playoff games.\nThroughout its existence, Warsaw has been a multi-cultural city. According to the 1901 census, out of 711,988 inhabitants 56.2% were Catholics, 35.7% Jews, 5% Greek orthodox Christians and 2.8%",
+          "lang": "en",
+          "page": 1,
+          "chunk_index": 4
+        },
+        {
+          "_id": "6aa01ae0de46c52b7222abd0",
+          "filename": "en_converted_3.pdf",
+          "file_hash": "3e1b478e55c47c1b062a51bff3ee6ea4",
+          "content": "\nJacksonville has suffered less damage from hurricanes than most other east coast cities, although the threat does exist for a direct hit by a major hurricane. The city has only received one direct hit from a hurricane since 1871; however, Jacksonville has experienced hurricane or near-hurricane conditions more than a dozen times due to storms crossing the state from the Gulf of Mexico to the Atlantic Ocean, or passing to the north or south in the Atlantic and brushing past the area. The strongest effect on Jacksonville was from Hurricane Dora in 1964, the only recorded storm to hit the First Coast with sustained hurricane-force winds. The eye crossed St. Augustine with winds that had just barely diminished to 110 mph (180 km/h), making it a strong Category 2 on the Saffir-Simpson Scale. Jacksonville also suffered damage from 2008's Tropical Storm Fay which crisscrossed the state, bringing parts of Jacksonville under darkness for four days. Similarly, four years prior to this, Jacksonville was inundated by Hurricane Frances and Hurricane Jeanne, which made landfall south of the area. These tropical cyclones were the costliest indirect hits to Jacksonville. Hurricane Floyd in 1999 caused damage mainly to Jacksonville Beach. During Floyd, the Jacksonville Beach pier was severely damaged, and later demolished. The rebuilt pier was later damaged by Fay, but not destroyed. Tropical Storm Bonnie would cause minor damage in 2004, spawning a minor tornado in the process. On May 28, 2012, Jacksonville was hit by Tropical Storm Beryl, packing winds up to 70 miles per hour (113 km/h) which made landfall near Jacksonville Beach.",
+          "lang": "en",
+          "page": 1,
+          "chunk_index": 1
+        },
+        {
+          "_id": "6aa01b31de46c52b7222ac2b",
+          "filename": "en_converted_6.pdf",
+          "file_hash": "8631e29d0d03c14c0a79bfb33b7c3b20",
+          "content": "that became a hit when it premiered as a midseason series in 1981, five months before Spelling's other ABC hit Charlie's Angels ended its run. The network was also propelled during the early 1980s by the continued successes of Happy Days, Three's Company, Laverne & Shirley and Fantasy Island, and gained new hits in Too Close for Comfort, Soap spinoff Benson and Happy Days spinoff Mork & Mindy. In 1981, ABC (through its ABC Video Services division) launched the Alpha Repertory Television Service (ARTS), a cable channel operated as a joint venture with the Hearst Corporation offering cultural and arts programming, which aired as a nighttime service over the channel space of Nickelodeon.",
+          "lang": "en",
+          "page": 2,
+          "chunk_index": 7
+        }
+      ],
+      "translated_documents": [],
+      "context": [
+        "Source:: en_converted_3.pdf - Page 1: \n\nWith 4:51 left in regulation, Carolina got the ball on their own 24-yard line with a chance to mount a game-winning drive, and soon faced 3rd-and-9. On the next play, Miller stripped the ball away from Newton, and after several players dove for it, it took a long bounce backwards and was recovered by Ward, who returned it five yards to the Panthers 4-yard line. Although several players dove into the pile to attempt to recover it, Newton did not and his lack of aggression later earned him heavy criticism. Meanwhile, Denver's offense was kept out of the end zone for three plays, but a holding penalty on cornerback Josh Norman gave the Broncos a new set of downs. Then Anderson scored on a 2-yard touchdown run and Manning completed a pass to Bennie Fowler for a 2-point conversion, giving Denver a 24–10 lead with 3:08 left and essentially putting the game away. Carolina had two more drives, but failed to get a first down on each one.",
+        "Source:: en_converted_8.pdf - Page 2: \n\nThe Panthers defense gave up just 308 points, ranking sixth in the league, while also leading the NFL in interceptions with 24 and boasting four Pro Bowl selections. Pro Bowl defensive tackle Kawann Short led the team in sacks with 11, while also forcing three fumbles and recovering two. Fellow lineman Mario Addison added 6½ sacks. The Panthers line also featured veteran defensive end Jared Allen, a 5-time pro bowler who was the NFL's active career sack leader with 136, along with defensive end Kony Ealy, who had 5 sacks in just 9 starts. Behind them, two of the Panthers three starting linebackers were also selected to play in the Pro Bowl: Thomas Davis and Luke Kuechly. Davis compiled 5½ sacks, four forced fumbles, and four interceptions, while Kuechly led the team in tackles (118) forced two fumbles, and intercepted four passes of his own. Carolina's secondary featured Pro Bowl safety Kurt Coleman, who led the team with a career high seven interceptions, while also racking up 88 tackles and Pro Bowl cornerback Josh Norman, who developed into a shutdown corner during the season and had four interceptions, two of which were returned for touchdowns.",
+        "Source:: en_converted_3.pdf - Page 1: \nThe Broncos defeated the Pittsburgh Steelers in the divisional round, 23–16, by scoring 11 points in the final three minutes of the game. They then beat the defending Super Bowl XLIX champion New England Patriots in the AFC Championship Game, 20–18, by intercepting a pass on New England's 2-point conversion attempt with 17 seconds left on the clock. Despite Manning's problems with interceptions during the season, he didn't throw any in their two playoff games.\nThroughout its existence, Warsaw has been a multi-cultural city. According to the 1901 census, out of 711,988 inhabitants 56.2% were Catholics, 35.7% Jews, 5% Greek orthodox Christians and 2.8%",
+        "Source:: en_converted_3.pdf - Page 1: \n\nJacksonville has suffered less damage from hurricanes than most other east coast cities, although the threat does exist for a direct hit by a major hurricane. The city has only received one direct hit from a hurricane since 1871; however, Jacksonville has experienced hurricane or near-hurricane conditions more than a dozen times due to storms crossing the state from the Gulf of Mexico to the Atlantic Ocean, or passing to the north or south in the Atlantic and brushing past the area. The strongest effect on Jacksonville was from Hurricane Dora in 1964, the only recorded storm to hit the First Coast with sustained hurricane-force winds. The eye crossed St. Augustine with winds that had just barely diminished to 110 mph (180 km/h), making it a strong Category 2 on the Saffir-Simpson Scale. Jacksonville also suffered damage from 2008's Tropical Storm Fay which crisscrossed the state, bringing parts of Jacksonville under darkness for four days. Similarly, four years prior to this, Jacksonville was inundated by Hurricane Frances and Hurricane Jeanne, which made landfall south of the area. These tropical cyclones were the costliest indirect hits to Jacksonville. Hurricane Floyd in 1999 caused damage mainly to Jacksonville Beach. During Floyd, the Jacksonville Beach pier was severely damaged, and later demolished. The rebuilt pier was later damaged by Fay, but not destroyed. Tropical Storm Bonnie would cause minor damage in 2004, spawning a minor tornado in the process. On May 28, 2012, Jacksonville was hit by Tropical Storm Beryl, packing winds up to 70 miles per hour (113 km/h) which made landfall near Jacksonville Beach.",
+        "Source:: en_converted_6.pdf - Page 2: \nthat became a hit when it premiered as a midseason series in 1981, five months before Spelling's other ABC hit Charlie's Angels ended its run. The network was also propelled during the early 1980s by the continued successes of Happy Days, Three's Company, Laverne & Shirley and Fantasy Island, and gained new hits in Too Close for Comfort, Soap spinoff Benson and Happy Days spinoff Mork & Mindy. In 1981, ABC (through its ABC Video Services division) launched the Alpha Repertory Television Service (ARTS), a cable channel operated as a joint venture with the Hearst Corporation offering cultural and arts programming, which aired as a nighttime service over the channel space of Nickelodeon."
+      ],
+      "retrieval_time": 1.4547138002235442,
+      "generate_answer_time": 81.5047863998916,
+      "translate_time": 52.16135419998318,
+      "total_time": 135.29862520005554
+    },
+    "hardware": [
+      {
+        "avg_ram_mb": 241.7920850409836,
+        "peak_ram_mb": 575.765625,
+        "avg_vram_mb": 0.0,
+        "peak_vram_mb": 0.0,
+        "avg_cpu_percent": 81.64557377049181,
+        "peak_cpu_percent": 100.0,
+        "rag_strategy": "tRAG",
+        "phase": "q_translation"
+      },
+      {
+        "avg_ram_mb": 26.212410177139038,
+        "peak_ram_mb": 96.27734375,
+        "avg_vram_mb": 0.0,
+        "peak_vram_mb": 0.0,
+        "avg_cpu_percent": 89.22192513368984,
+        "peak_cpu_percent": 100.0,
+        "rag_strategy": "tRAG",
+        "phase": "r_translate"
+      },
+      {
+        "avg_ram_mb": 21.61698717948718,
+        "peak_ram_mb": 21.67578125,
+        "avg_vram_mb": 0.0,
+        "peak_vram_mb": 0.0,
+        "avg_cpu_percent": 88.67628205128206,
+        "peak_cpu_percent": 100.0,
+        "rag_strategy": "tRAG",
+        "phase": "generation"
+      }
+    ],
+    "pipeline_execution_time": 135.30287300003693,
+    "pipeline_error": null
+  }
+]

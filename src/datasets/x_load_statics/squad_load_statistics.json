@@ -1,0 +1,46 @@
+{
+  "requested_languages": [
+    "fr"
+  ],
+  "dataset": "qwant/squad_fr",
+  "split": "validation",
+  "source_filter": {
+    "dataset": "google/xquad",
+    "config": "xquad.en",
+    "split": "validation",
+    "num_xquad_ids": 1190
+  },
+  "per_language": {
+    "fr": {
+      "available_in_squad_fr": true,
+      "num_questions_loaded": 1190,
+      "num_unique_contexts": 240,
+      "question_length_chars": {
+        "mean": 71.0,
+        "min": 15,
+        "max": 221
+      },
+      "answer_length_chars": {
+        "mean": 22.9,
+        "min": 1,
+        "max": 182
+      },
+      "context_length_chars": {
+        "mean": 877.2,
+        "min": 188,
+        "max": 3861
+      }
+    }
+  },
+  "parallelism_check": {
+    "languages_compared": [
+      "xquad_en",
+      "fr"
+    ],
+    "xquad_ids": 1190,
+    "french_ids": 1190,
+    "ids_common_to_xquad_and_french": 1190,
+    "fully_parallel": true
+  },
+  "total_questions_loaded": 1190
+}

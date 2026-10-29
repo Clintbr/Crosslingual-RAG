@@ -1,0 +1,2 @@
+﻿questions,context_precision_mean,context_recall_mean,context_relevance_mean,faithfulness_mean,answer_relevancy_mean,answer_correctness_mean,retrieval_time_mean,generate_answer_time_mean,total_time_mean,avg_ram_mb_mean,peak_ram_mb_mean,avg_cpu_percent_mean,peak_cpu_percent_mean,errors,error_rate
+300,0.6637774061687105,0.4414715719063545,0.6284838350055743,0.4816053511705686,0.8048736033895084,0.7703581484686215,0.19278767133325647,43.44680742066674,43.70847260166658,94.31598679886747,95.87753255208334,88.94418900336422,99.99050000000001,0.0,0.0
