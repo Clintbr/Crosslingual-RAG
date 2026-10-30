@@ -154,8 +154,8 @@ Results are exported to `src/evaluating/analysis_results/`:
 | **City** | Gießen                         |
 | **Author / Student** | Clint Bryan Nguena                                                                 |
 | **Supervisor / Reviewer** | Herr M.Sc. Manuel Groh                                                             |
-| **Co-Reviewer** | Herr Prof. Dr. Dennis Priefer                                                            |
+| **Co-Reviewer** | Herr Prof. Dr. Peter Kneisel                                                            |
 | **Institution** | Technische Hochschule Mittelhessen, Gießen (Institut für Informationswissenschaft) |
 | **Degree / Program** | Bachelor of Science (B.Sc.) in Computer Science                                    |
 | **Repository URL** | [https://github.com/Clintbr/Crosslingual-RAG](https://github.com/Clintbr/Crosslingual-RAG)                                      |
-| **Submission Date** | 23 September 2026                                                                  |
+| **Submission Date** | 30.10.2026                                                                  |
